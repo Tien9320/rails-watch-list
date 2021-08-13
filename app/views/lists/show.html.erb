@@ -1,0 +1,26 @@
+<div class="container" id="intro">
+  <h1>
+    <%= @list.name %>
+  </h1>
+  <div class="container d-flex justify-content-around">
+    <%= link_to "Add bookmark" , new_list_bookmark_path(@list.id) %>
+  </div>
+</div>
+
+<% @list.movies.each do |movie| %>
+  <div class="card-product">
+    <img src="<%=movie.poster_url %>">
+    <div class="card-product-infos">
+      <h2>
+        <%= movie.title %>
+      </h2>
+      <p>
+        <%= movie.bookmarks[0].comment%>
+      </p>
+      <p>
+        <%= link_to "Delete bookmark" , bookmark_path(movie.bookmarks[0]), method: :delete, data: {
+          confirm: "Are you sure?" } %>
+      </p>
+    </div>
+  </div>
+  <% end %>

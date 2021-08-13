@@ -1,28 +1,21 @@
-<h1>List</h1>
+<div class="container" id="intro">
+  <h1>Movie Lists</h1>
+  <%= link_to "Add a List" , new_list_path%>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Banner url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <div class="row justify-content-space-around">
     <% @lists.each do |list| %>
-      <tr>
-        <td>
-          <%= list.name %>
-        </td>
-        <td>
-          <%= link_to 'Destroy' , list, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+      <div class="col my-3">
+        <div class="card" style="width: 18rem, height:18rem;">
+          <img src="https://source.unsplash.com/random" class="card-img-top" alt="A random picture">
+          <div class="card-body">
+            <p class="card-text">
+              <%=link_to list.name, list_path(list) %>
+            </p>
+          </div>
+        </div>
+      </div>
       <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New list' , new_list_path %>
+  </div>
+</div>
